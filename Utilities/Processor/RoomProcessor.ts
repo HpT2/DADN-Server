@@ -1,5 +1,6 @@
 import { Room } from "../Classes";
-import { MainProcessor, Processor } from ".";
+import { MainProcessor } from ".";
+import { Processor } from "./Processors";
 
 export class RoomProcessor extends Processor{
     roomList : Map<string, Room>;
@@ -10,6 +11,6 @@ export class RoomProcessor extends Processor{
     }
 
     Process(data : any){
-        
+        console.log("data room: " + data);
     }
 }

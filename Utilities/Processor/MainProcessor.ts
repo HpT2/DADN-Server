@@ -1,6 +1,9 @@
 import { Player, Room, Game } from "../Classes";
 import * as dgram from 'dgram';
-import { MenuProcessor, RoomProcessor, GameProcessor, Processor } from ".";
+import { MenuProcessor, RoomProcessor, GameProcessor } from ".";
+import { Processor } from "./Processors";
+import { server } from "typescript";
+import { randomInt } from "crypto";
 
 export class MainProcessor extends Processor{
     serverSocket : dgram.Socket;
@@ -16,6 +19,7 @@ export class MainProcessor extends Processor{
 
     constructor(){
         super();
+        MainProcessor.Instance = this;
         this.roomList = new Map<string, Room>();
         this.gameList = new Map<string, Game>();
         this.playerList = new Map<string, Player>();
@@ -35,15 +39,14 @@ export class MainProcessor extends Processor{
         });
         this.serverSocket.bind(this.port);
 
-
-
         //handle message
         this.serverSocket.on("message", (data : Buffer, rInfo : dgram.RemoteInfo) => {
             let msg : string = data.toString("utf-8");
             let json : any = JSON.parse(msg);
+            console.log(json);
             this.stateHandler.get(json.state)?.Process(json.data);
+            //this.serverSocket.send("hello " + randomInt(10, 100), rInfo.port, rInfo.address);
         }); 
 
-        MainProcessor.Instance = this;
     }
 }

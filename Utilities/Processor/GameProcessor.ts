@@ -1,5 +1,6 @@
 import { Game } from "../Classes";
-import { MainProcessor, Processor } from ".";
+import { MainProcessor } from ".";
+import { Processor } from "./Processors";
 
 export class GameProcessor extends Processor{
     gameList : Map<string, Game>;
@@ -10,6 +11,6 @@ export class GameProcessor extends Processor{
     }
 
     Process(data : any){
-
+        console.log("data game: " + data);
     }
 }

@@ -1,2 +1,2 @@
-export * as Utils from './Classes';
-export * as Processor from './Processor';
+export * as Classes from './Classes';
+export * as Processors from './Processor';

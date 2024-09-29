@@ -1,3 +1,3 @@
-import { Processor } from "./class";
+import { Processors } from "./Utilities";
 
-new Processor.MainProcessor();
+new Processors.MainProcessor();
