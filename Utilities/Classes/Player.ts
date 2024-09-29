@@ -1,14 +1,14 @@
-import {Socket} from 'dgram';
-
 export class Player {
-    socket : Socket;
+    port : number;
+    address : string;
     name : string;
     id : string;
     //others attr
 
-    constructor(socket : Socket, name : string, id : string)
+    constructor(port : number, address : string, name : string, id : string)
     {
-        this.socket = socket;
+        this.port = port;
+        this.address = address;
         this.name = name;
         this.id = id;
     }
